@@ -4,16 +4,16 @@
   $message = "";
   
   if (isset($_POST['save'])) {
-    $full_name = $_POST['full_name'];
-    $email = $_POST['email'];
-    $phone = $_POST['phone'];
-    $address = $_POST['address'];
+    $full_name = $_POST['Name'];
+    $email = $_POST['Email'];
+    $IdNumber = $_POST['IdNumber'];
+    $course = $_POST['course'];
   
     if ($full_name == "" || $email == "") {
       $message = "Name and Email are required!";
     } else {
-      $sql = "INSERT INTO clients (full_name, email, phone, address)
-              VALUES ('$full_name', '$email', '$phone', '$address')";
+      $sql = "INSERT INTO clients (IdNumber, Name, Email, Course)
+              VALUES ('$IdNumber', '$full_name', '$email', '$course')";
       mysqli_query($conn, $sql);
       header("Location: clients_list.php");
       exit;
@@ -38,16 +38,16 @@
   <form method="post" id="client-form">
     
     <label class="form-label">Full Name*</label><br>
-    <input type="text" name="full_name" class="form-input"><br><br>
+    <input type="text" name="Name" class="form-input"><br><br>
   
     <label class="form-label">Email*</label><br>
-    <input type="text" name="email" class="form-input"><br><br>
-  
-    <label class="form-label">Phone</label><br>
-    <input type="text" name="phone" class="form-input"><br><br>
-  
-    <label class="form-label">Address</label><br>
-    <input type="text" name="address" class="form-input"><br><br>
+    <input type="text" name="Email" class="form-input"><br><br>
+
+    <label class="form-label">ID Number*</label><br>
+    <input type="text" name="IdNumber" class="form-input"><br><br>
+
+    <label class="form-label">Course</label><br>
+    <input type="text" name="course" class="form-input"><br><br>
 
     <div class="form-actions">
       <button type="button" id="cancel-btn" onclick="window.location.href='clients_list.php'">Cancel</button>
